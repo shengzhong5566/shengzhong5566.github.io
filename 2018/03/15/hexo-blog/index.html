@@ -1,0 +1,442 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="声钟博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://shengzhong5566.github.io">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>hexo快速搭建自己的免费博客 | 声钟博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="声钟博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1273546453 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1273546453%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?2ce0e25ff574beec524d3b61f63a3abb";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-118315878-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner2.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='杨声钟'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Javascript/"><i class="fa "></i>Javascript</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Nodejs/"><i class="fa "></i>Nodejs</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="hexo快速搭建自己的免费博客">
+            
+	            hexo快速搭建自己的免费博客
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/hexo">
+            hexo
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/03/15</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>Hexo是快速、简洁且高效的博客框架，是不是我们每个前端开发人员都有一个建立自己博客的梦，是不是很多人都是想做，却始终都没有行动起来呢？</p>
+<p>博客带给我们的优势是偶尔看到一些东西想做点笔记，但是每次写的东西都会到处放，下次需要的时候半天都找不到，是不是挺浪费时间的。下面我将介绍怎么快速又方便的搭建属于自己的博客。</p>
+<p>hexo主题特别多，总有一款适合你。</p>
+<p><strong>前提条件：</strong></p>
+<ul>
+<li>安装过<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git</a></li>
+<li>安装过<a href="http://nodejs.cn/download/" target="_blank" rel="noopener">NodeJs</a></li>
+</ul>
+<p>安装过git和nodejs的直接跳过步骤1和步骤2。</p>
+<hr>
+<h2 id="1、安装git"><a href="#1、安装git" class="headerlink" title="1、安装git"></a>1、安装git</h2><ul>
+<li>Windows：下载并安装 <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git</a>.</li>
+<li>Mac：使用 <a href="https://brew.sh/" target="_blank" rel="noopener">Homebrew</a> ：<code>brew install git</code> ; 或下载<a href="https://git-scm.com/download/mac" target="_blank" rel="noopener">安装程序</a>安装。</li>
+<li>Linux (Ubuntu, Debian)：<code>sudo apt-get install git-core</code></li>
+<li>Linux (Fedora, Red Hat, CentOS)：<code>sudo yum install git-core</code></li>
+</ul>
+<hr>
+<h2 id="2、安装nodejs"><a href="#2、安装nodejs" class="headerlink" title="2、安装nodejs"></a>2、安装nodejs</h2><p>安装 Node.js 的最佳方式是使用 nvm。</p>
+<ul>
+<li>cURL:<br><code>$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh</code></li>
+<li>Wget:<br><code>$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</code></li>
+</ul>
+<p>安装完成后，重启终端并执行下列命令即可安装 Node.js。</p>
+<ul>
+<li><code>$ nvm install stable</code></li>
+</ul>
+<p>或者也可以下载 <a href="http://nodejs.cn/download/" target="_blank" rel="noopener">安装程序</a> 来安装。对于windows用户来说，建议使用安装程序进行安装。安装时，请勾选Add to PATH选项。  </p>
+<hr>
+<h2 id="3、安装hexo，创建默认主题的博客"><a href="#3、安装hexo，创建默认主题的博客" class="headerlink" title="3、安装hexo，创建默认主题的博客"></a>3、安装hexo，创建默认主题的博客</h2><p>windows的cmd命令窗口,mac的终端一直是我门前端离不开的小黑窗，我们需要习惯用命令行去完成需要做的事情。</p>
+<ul>
+<li><code>$ npm install hexo-cli -g</code></li>
+<li><code>$ hexo init blog</code></li>
+<li><p><code>$ cd blog</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">介绍下生成目录结构文件夹：</span><br><span class="line"> yourname</span><br><span class="line">   |-- node_modules：是依赖包</span><br><span class="line">   |-- public：存放的是生成的页面</span><br><span class="line">   |-- scaffolds：命令生成文章等的模板</span><br><span class="line">   |-- <span class="built_in">source</span>：用命令创建的各种文章</span><br><span class="line">   |-- themes：主题</span><br><span class="line">   |-- _config.yml：整个博客的配置</span><br><span class="line">   |-- db.json：<span class="built_in">source</span>解析所得到的</span><br><span class="line">   |-- package.json：项目所需模块项目的配置信息</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>$ npm install</code></p>
+</li>
+<li><code>$ hexo server</code></li>
+</ul>
+<p>按照步骤完成，在浏览器输入 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 是不是就可以看到hexo默认主题的样子：<br><img src="/img/hexoinit.png" alt="hexo最初的样子"></p>
+<hr>
+<h2 id="4、关联github"><a href="#4、关联github" class="headerlink" title="4、关联github"></a>4、关联github</h2><p>通过 GitHub 的 pages 功能，我们可以把我们的博客托管到 GitHub ，而无需去购买云服务器，让互联网都能访问自己的博客。</p>
+<p>1, 没有github账号的首先创建账号，有账号的我们继续。创建一个repository,名称为yourname.github.io,至于为什么需要这样的名称，可以直接当成域名访问，这里不重点介绍区别了。</p>
+<p><img src="/img/yourname.jpg" alt="创建一个repository"></p>
+<p>2, 点击settings,去选择master branch,然后save。</p>
+<p><img src="/img/setting.jpg" alt="选择setting"><br><img src="/img/branch.jpg" alt="选择master branch"></p>
+<p>3, 复制你的项目链接。</p>
+<p><img src="/img/download.jpg" alt="复制自己项目地址链接"></p>
+<p>4, 打开blog项目，修改 _config.yml 文件的一些配置(冒号之后都是有一个半角空格的),完成关联。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/shengzhong5566/shengzhong5566.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="5、本地项目推送到-GitHub-托管"><a href="#5、本地项目推送到-GitHub-托管" class="headerlink" title="5、本地项目推送到 GitHub 托管"></a>5、本地项目推送到 GitHub 托管</h2><p>安装 <code>$ npm install hexo-deployer-git --save</code> 插件，实现生产本地生产文件及推送功能。</p>
+<p>推送到 GitHub 托管执行命令（建议每次都按照如下步骤部署，这里后面的字母是generate、deploy的简写）</p>
+<ul>
+<li><code>$ hexo clean</code> </li>
+<li><code>$ hexo g</code> </li>
+<li><code>$ hexo d</code></li>
+</ul>
+<hr>
+<h2 id="6、选择适合自己的主题"><a href="#6、选择适合自己的主题" class="headerlink" title="6、选择适合自己的主题"></a>6、选择适合自己的主题</h2><p>hexo初始化之后默认的主题是landscape，然后可以到<a href="https://hexo.io/themes/" target="_blank" rel="noopener">点击这里</a>去找自己想要的主题。克隆下来放到themes文件夹中，注意文件夹名则是设置主题的名字。这里用next主题为例：</p>
+<ul>
+<li>进入blog文件夹</li>
+<li>git clone <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next</a> themes/next</li>
+</ul>
+<p>完成后确保themes文件夹里有了next与landscape同级。 这里下载主题方式很多，可以下载到其他地方，再拷贝到themes文件夹里。</p>
+<p>再修改根目录下的 _config.yml 文件配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>$ hexo clean</code> </li>
+<li><code>$ hexo g</code> </li>
+<li><code>$ hexo s</code></li>
+</ul>
+<p>本地服务启动后，可以在浏览器输入 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 预览。确定无误后执行</p>
+<ul>
+<li><code>$ hexo d</code></li>
+</ul>
+<hr>
+<h2 id="7、绑定域名"><a href="#7、绑定域名" class="headerlink" title="7、绑定域名"></a>7、绑定域名</h2><p>博客已经搭建好，也能通过github的域名访问，大部分人还是想用自己的域名。将自己的域名绑定到github这个博客项目上。</p>
+<p>1，github官网提供的两个主机ip地址：<code>192.30.252.153</code> 和 <code>192.30.252.154</code>。<br>将这两个作为主机地址，给域名的DNS解析添加两个 A记录，（ 这里使用新手快速添加，填入ip地址即可快速完成 ）然后再添加一个 CNAME记录 主机地址填的是我原本用来访问github博客的地址： shengzhong5566.github.io ，添加完成后如下：</p>
+<p><img src="/img/domain.jpg" alt="域名解析"></p>
+<p>2，在hexo本地目录 source 目录下面新建一个文件，取名为CNAME文件 (无后缀)，内容就是上面所说到的自己的域名</p>
+<p>CNAME文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">weblogger.club</span><br></pre></td></tr></table></figure></p>
+<p>此时记得我第4步的关联github，在设置中如果有自己的域名设置。</p>
+<hr>
+<h2 id="8、新建文章并同步到github上"><a href="#8、新建文章并同步到github上" class="headerlink" title="8、新建文章并同步到github上"></a>8、新建文章并同步到github上</h2><ul>
+<li><code>$ hexo new &#39;welcome&#39;</code></li>
+</ul>
+<p>执行命令后，在source文件里的_posts下就多了一个 welcome.md , 此时就可以使用markdown语法进行编写。<br>然后 <code>hexo s</code> 进行预览，如果已经完成，并想发布到github上，则：</p>
+<ul>
+<li><code>$ hexo clean</code> </li>
+<li><code>$ hexo g</code> </li>
+<li><code>$ hexo s</code></li>
+</ul>
+<h2 id="9、几个我们需要设置的地方"><a href="#9、几个我们需要设置的地方" class="headerlink" title="9、几个我们需要设置的地方"></a>9、几个我们需要设置的地方</h2><p>1, README.md不需要编译成README.html</p>
+<p>修改根目录下的 _config.yml 文件配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skip_render: README.md</span><br></pre></td></tr></table></figure></p>
+<p>2, 如果发不上去，有文字，但是样式和图片失效，则是路径需要设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line">url: https://shengzhong5566.github.io</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure></p>
+<p>3, 网站标题，网站语言设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Hexo Configuration</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/configuration.html</span></span><br><span class="line"><span class="comment">## Source: https://github.com/hexojs/hexo/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Site</span></span><br><span class="line">title: 声钟博客</span><br><span class="line">subtitle:</span><br><span class="line">description:</span><br><span class="line">keywords:</span><br><span class="line">author: 杨声钟</span><br><span class="line">language: zh-CN</span><br><span class="line">timezone:</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/03/26/http-server/" class="pre-post btn btn-default" title='node创建HTTP服务器'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">node创建HTTP服务器</span>
+        </a>
+    
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTQ2Mi8xMTk5OA==">
+  <script type="text/javascript">
+     (function(d, s) {
+         var j, e = d.getElementsByTagName(s)[0];
+         if (typeof LivereTower === 'function') { return; }
+         j = d.createElement(s);
+         j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+         j.async = true;
+         e.parentNode.insertBefore(j, e);
+     })(document, 'script');
+  </script>
+</div>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+    <aside class="col-md-4 sidebar">
+        
+        
+        
+        
+    <div class="widget notification">
+        <h3 class="title">网站公告</h3>
+        <div>
+            <p>文章中如果遇到问题或者文中有错误的地方，欢迎留言指正。<br>
+<hr/>
+    邮箱 :  <a href="mailto:shengzhong.cool@163.com">shengzhong.cool@163.com</a><br>
+    微信号 :  <a href="tel:16602124911">shengzhong5566</a>
+
+</p>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+        <h3 class="title">分类</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Nodejs/"><i class="fa" aria-hidden="true">Nodejs</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/"><i class="fa" aria-hidden="true">hexo</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/"><i class="fa" aria-hidden="true">javascript</i></a><span class="category-list-count">1</span></li></ul>
+    </div>
+
+
+        
+        
+    <div class="widget">
+      <h3 class="title">归档</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/"><i class="fa" aria-hidden="true">四月 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/"><i class="fa" aria-hidden="true">三月 2018</i></a><span class="archive-list-count">2</span></li></ul>
+    </div>
+
+
+        
+        
+  <div class="widget">
+    <h3 class="title">标签云</h3>
+    <div class="content tag-cloud">
+        <a href="/tags/karma/" style="font-size: 10px;">karma</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a>
+    </div>
+  </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">友链</h3>
+        <div class="content friends-link">
+        
+            <a href="http://www.weblogger.club" class="fa" target="_blank">个人博客</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
+
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <span>Copyright &copy; 2018
+                </span> |
+        <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span> |
+        <span id="busuanzi_container_site_pv">
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span> |
+        <span id="busuanzi_container_site_uv">
+您是本站第<span id="busuanzi_value_site_uv"></span>位访客
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+	<script src="/js/search.js?rev=@@hash"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
