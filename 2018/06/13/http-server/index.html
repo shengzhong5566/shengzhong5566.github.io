@@ -1,0 +1,407 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="声钟博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://shengzhong5566.github.io">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>node创建HTTP服务器 | 声钟博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="声钟博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1273546453 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1273546453%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?2ce0e25ff574beec524d3b61f63a3abb";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-118315878-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner2.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='杨声钟'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/HTML/CSS/"><i class="fa "></i>HTML/CSS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Javascript/"><i class="fa "></i>Javascript</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Nodejs/"><i class="fa "></i>Nodejs</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/小程序/"><i class="fa "></i>小程序</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="node创建HTTP服务器">
+            
+	            node创建HTTP服务器
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/Nodejs">
+            Nodejs
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/nodejs" title='nodejs'>
+                        nodejs
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/06/13</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>创建http服务器是我们学习node创建一个工程的第一步，那么对于初学者来说，是哪些代码能实现这样的功能,下面介绍3种方式：</p>
+<pre><code>申明：建议按照顺序执行操作，后面会省略前面已经执行的命令
+</code></pre><hr>
+<h2 id="node的http模块创建HTTP服务器"><a href="#node的http模块创建HTTP服务器" class="headerlink" title="node的http模块创建HTTP服务器"></a>node的http模块创建HTTP服务器</h2><p><strong>前提条件：</strong><br>假定你已经安装了 Node.js，接下来为你的应用创建一个目录，然后进入此目录并将其作为当前工作目录。</p>
+<ul>
+<li><code>$ mkdir mydemo</code></li>
+<li><code>$ cd mydemo</code></li>
+<li><code>$ npm init -y</code></li>
+</ul>
+<pre><code>mkdir是新建文件夹，cd是进入目录，npm init初始化一个package.json文件，-y是省去命名窗口选择或者输入，直接默认生成package.json文件。
+</code></pre><p>新建app.js文件，内容为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> app = http.createServer(cb); <span class="comment">//http.createServer()创建了一个应用的实例，cb是回调函数。</span></span><br><span class="line">app.listen(<span class="number">3000</span>,callback)  <span class="comment">//监听3000端口</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cb</span>(<span class="params">req,res</span>)</span>&#123; <span class="comment">//req是request请求头，res是response请求返回结果</span></span><br><span class="line">    res.writeHead(<span class="number">200</span>,&#123;<span class="string">'Content-Type'</span>:<span class="string">'text/html'</span>&#125;); <span class="comment">//Content-Type标头告诉客户端实际返回的内容的内容类型为html</span></span><br><span class="line">    res.write(<span class="string">'&lt;head&gt;&lt;meta charset="utf-8"/&gt;&lt;/head&gt;'</span>);  </span><br><span class="line">    res.write(<span class="string">'&lt;h1&gt;Nodejs&lt;/h1&gt;'</span>);</span><br><span class="line">    res.write(<span class="string">'&lt;p&gt;第一个Nodejs，demo&lt;/p&gt;'</span>);</span><br><span class="line">    res.end(); <span class="comment">//服务端没有数据传回客户端就可以直接用red.end返回，如果有数据可以使用res.send,res.json此时可以不写res.end,因为在前面两个方法中默认会返回</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'HTTP server is success,http://127.0.0.1:3000进行访问'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行<code>node app.js</code></li>
+<li>浏览器访问<code>http://127.0.0.1:3000</code></li>
+</ul>
+<hr>
+<p>这里如果更改代码，是需要重启服务的，要想监测文件变化，可以使用npm安装supervisor：</p>
+<ul>
+<li>$ sudo npm install -g supervisor</li>
+<li>supervisor app.js</li>
+</ul>
+<pre><code>sudo是mac可能解决mac全局安装没有权限问题，当使用node app.js运行程序时，修改代码后刷新浏览器里没有变更，但使用supervisor app.js后，supervisor可以监听代码的变化，自动重启node服务，刷新浏览器即可查看最新。
+</code></pre><hr>
+<h2 id="Express框架实现"><a href="#Express框架实现" class="headerlink" title="Express框架实现"></a><a href="http://www.expressjs.com.cn/" target="_blank" rel="noopener">Express</a>框架实现</h2><p><strong>前提条件：</strong></p>
+<ul>
+<li>$ npm install express –save</li>
+</ul>
+<p>在mydemo文件夹中新建app1.js文件，内容为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>); <span class="comment">//引入express模块</span></span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line">app.get(<span class="string">'/'</span>,cb) <span class="comment">//浏览器访问根目录执行回调函数</span></span><br><span class="line">app.listen(<span class="number">3001</span>,callback)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cb</span> (<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">        res.writeHead(<span class="number">200</span>,&#123;<span class="string">'Content-Type'</span>:<span class="string">'text/html'</span>&#125;);</span><br><span class="line">        res.write(<span class="string">'&lt;head&gt;&lt;meta charset="utf-8"/&gt;&lt;/head&gt;'</span>);  </span><br><span class="line">        res.write(<span class="string">'&lt;h1&gt;Nodejs&lt;/h1&gt;'</span>);</span><br><span class="line">        res.write(<span class="string">'&lt;p&gt;第一个Nodejs，demo&lt;/p&gt;'</span>);</span><br><span class="line">        res.end();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'HTTP server is success,http://127.0.0.1:3001进行访问'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行<code>supervisor app1.js</code></li>
+<li>浏览器访问<code>http://127.0.0.1:3001</code></li>
+</ul>
+<hr>
+<p>##koa2框架实现</p>
+<p><strong>前提条件：</strong><br>node版本 v7.6.0或更高（可使用node版本管理，比如nvm,n）</p>
+<ul>
+<li>$ npm install koa –save</li>
+</ul>
+<p>在mydemo文件夹中新建app2.js文件，内容为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line">app.use(<span class="keyword">async</span> ctx =&gt; &#123;  <span class="comment">//async是异步，这里需要对es6有一定的了解，ctx是上下文（Context）,Koa Context将node的 request和response 对象封装到单个对象中，为编写 Web 应用程序和 API 提供了许多有用的方法。</span></span><br><span class="line">     ctx.body = <span class="string">'&lt;h1&gt;Nodejs&lt;/h1&gt;&lt;p&gt;第一个Nodejs，demo&lt;/p&gt;'</span>;</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="number">3002</span>, ()=&gt;&#123;  <span class="comment">//Koa应用程序被绑定到3002端口,同一个应用程序同时作为多个地址，详情看koa2官网</span></span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'HTTP server is success,http://127.0.0.1:3002进行访问'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>koa2中支持为啥要7.6.0以上版本，因为koa2,async,await的方法支持.</p>
+<hr>
+<p>框架还有很多：</p>
+<ul>
+<li><a href="https://hapijs.com/" target="_blank" rel="noopener">hapi</a></li>
+<li><a href="http://eggjs.org/zh-cn/intro/quickstart.html" target="_blank" rel="noopener">egg</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/06/13/karma-init/" class="pre-post btn btn-default" title='karma单元测试入门'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">karma单元测试入门</span>
+        </a>
+    
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTQ2Mi8xMTk5OA==">
+  <script type="text/javascript">
+     (function(d, s) {
+         var j, e = d.getElementsByTagName(s)[0];
+         if (typeof LivereTower === 'function') { return; }
+         j = d.createElement(s);
+         j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+         j.async = true;
+         e.parentNode.insertBefore(j, e);
+     })(document, 'script');
+  </script>
+</div>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+    <aside class="col-md-4 sidebar">
+        
+        
+        
+        
+    <div class="widget notification">
+        <h3 class="title">网站公告</h3>
+        <div>
+            <p>文章中如果遇到问题或者文中有错误的地方，欢迎留言指正。<br>
+<hr/>
+    邮箱 :  <a href="mailto:shengzhong.cool@163.com">shengzhong.cool@163.com</a><br>
+    微信号 :  <a href="tel:16602124911">shengzhong5566</a>
+
+</p>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+        <h3 class="title">分类</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Nodejs/"><i class="fa" aria-hidden="true">Nodejs</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/"><i class="fa" aria-hidden="true">javascript</i></a><span class="category-list-count">1</span></li></ul>
+    </div>
+
+
+        
+        
+    <div class="widget">
+      <h3 class="title">归档</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/"><i class="fa" aria-hidden="true">六月 2018</i></a><span class="archive-list-count">2</span></li></ul>
+    </div>
+
+
+        
+        
+  <div class="widget">
+    <h3 class="title">标签云</h3>
+    <div class="content tag-cloud">
+        <a href="/tags/karma/" style="font-size: 10px;">karma</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a>
+    </div>
+  </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">友链</h3>
+        <div class="content friends-link">
+        
+            <a href="http://www.weblogger.club" class="fa" target="_blank">个人博客</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
+
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <span>Copyright &copy; 2018
+                </span> |
+        <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span> |
+        <span id="busuanzi_container_site_pv">
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span> |
+        <span id="busuanzi_container_site_uv">
+您是本站第<span id="busuanzi_value_site_uv"></span>位访客
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+	<script src="/js/search.js?rev=@@hash"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

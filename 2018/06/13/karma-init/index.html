@@ -1,0 +1,412 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="声钟博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://shengzhong5566.github.io">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>karma单元测试入门 | 声钟博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="声钟博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1273546453 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1273546453%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?2ce0e25ff574beec524d3b61f63a3abb";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-118315878-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner2.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='杨声钟'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/HTML/CSS/"><i class="fa "></i>HTML/CSS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Javascript/"><i class="fa "></i>Javascript</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Nodejs/"><i class="fa "></i>Nodejs</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/小程序/"><i class="fa "></i>小程序</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="karma单元测试入门">
+            
+	            karma单元测试入门
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/javascript">
+            javascript
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/karma" title='karma'>
+                        karma
+                    </a>
+                
+                    <a href="/tags/单元测试" title='单元测试'>
+                        单元测试
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/06/13</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>Karma是一个提升测试效率的工具，帮助开发者更好更快速地在多种环境下执行测试代码，拿到测试结果。在运行的时候，它会自动启动配置好的浏览器，同时也会启动一个node服务器，然后在启动好的浏览器中执行测试代码，并将测试代码执行结果返回node服务器，然后node服务器再打印出收到的执行结果。</p>
+<pre><code>申明：下列命令行是在mac运行环境下。
+</code></pre><h2 id="1、初始化一个工程"><a href="#1、初始化一个工程" class="headerlink" title="1、初始化一个工程"></a>1、初始化一个工程</h2><ul>
+<li><code>mkdir karma-demo &amp;&amp; cd karma-demo</code></li>
+<li><code>npm init -y</code></li>
+</ul>
+<h2 id="2、安装Karma及其他依赖包"><a href="#2、安装Karma及其他依赖包" class="headerlink" title="2、安装Karma及其他依赖包"></a>2、安装Karma及其他依赖包</h2><p><strong>前提条件：</strong><br>本地已经安装了node.js，对npm安装依赖包已经掌握。mac安装时会出现没有权限，建议在命令行前增加sudo。</p>
+<ul>
+<li><code>$ npm install -g karma-cli</code></li>
+<li><code>$ npm install karma --save-dev</code></li>
+<li><code>$ npm install karma-jasmine --save-dev</code></li>
+<li><code>$ npm install karma-phantomjs-launcher --save-dev</code></li>
+<li><code>$ npm install phantomjs --save-dev</code></li>
+<li><code>$ npm install jasmine-core --save-dev</code></li>
+</ul>
+<pre><code>karma-cli可以理解是生成karma测试配置文件脚手架，karma这里是本地安装，也可以全局安装，karma-phantomjs-launcher调用不同浏览器就需要不同的插件，这里使用的是无头浏览器，通俗点就是无界面，更多请看下面浏览器插件汇总。jasmine是单元测试框架。
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">浏览器插件汇总</span><br><span class="line"> * Chrome `karma-chrome-launcher`</span><br><span class="line"> * ChromeCanary `karma-chrome-launcher`</span><br><span class="line"> * PhantomJS `karma-phantomjs-launcher`</span><br><span class="line"> * Firefox `karma-firefox-launcher`</span><br><span class="line"> * Opera `karma-opera-launcher`</span><br><span class="line"> * IE `karma-ie-launcher`</span><br><span class="line"> * Safari `karma-safari-launcher`</span><br></pre></td></tr></table></figure>
+<p>安装完成后使用<code>karma start</code>测试下是否安装成功。如果提示未找到karma你又确定安装成功了,请用 <code>./node_modules/karma/bin/karma start</code> 。我使用webstorm的命令窗口可以使用karma start，用系统命令窗口则需要使用后者。</p>
+<p>成功如下图：<br><img src="/img/karma-start.png" alt="karma start成功图"></p>
+<h2 id="3、新建源文件"><a href="#3、新建源文件" class="headerlink" title="3、新建源文件"></a>3、新建源文件</h2><ul>
+<li><code>mkdir src</code></li>
+<li><code>touch utils.js</code></li>
+</ul>
+<p>utils.js内容：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 字符串翻转</span></span><br><span class="line"><span class="comment"> * @param name</span></span><br><span class="line"><span class="comment"> * @returns &#123;string&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> name.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判断是否是整数</span></span><br><span class="line"><span class="comment"> * @param num</span></span><br><span class="line"><span class="comment"> * @returns &#123;boolean&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isInteger</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> num !== <span class="string">"number"</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">var</span> pattern = <span class="regexp">/^[1-9]\d*$/g</span>;</span><br><span class="line">    <span class="keyword">return</span> pattern.test(num);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判断value的数据类型</span></span><br><span class="line"><span class="comment"> * @param value</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTypeofVal</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> val == <span class="string">'object'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> objType(val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> val;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取对象的类型</span></span><br><span class="line"><span class="comment"> * @param arr</span></span><br><span class="line"><span class="comment"> * @returns &#123;string&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">objType</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.apply(arr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="4、新建单元测试文件"><a href="#4、新建单元测试文件" class="headerlink" title="4、新建单元测试文件"></a>4、新建单元测试文件</h2><ul>
+<li><code>mkdir test</code></li>
+<li><code>touch index.spec.js</code></li>
+</ul>
+<p>index.spec.js内容：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试整数  第一个单元测试expect(true).toEqual(isInteger(20));里面写了3种方式，都是可以的。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">describe(<span class="string">"this is a integer test!"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    it(<span class="string">"Is integer"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        expect(<span class="literal">true</span>).toEqual(isInteger(<span class="number">20</span>));</span><br><span class="line">        expect(isInteger(<span class="number">20</span>)).toBe(<span class="literal">true</span>);</span><br><span class="line">        expect(isInteger(<span class="number">20</span>)).toEqual(<span class="literal">true</span>);</span><br><span class="line">        expect(<span class="literal">false</span>).toEqual(isInteger(<span class="string">"20"</span>));</span><br><span class="line">        expect(<span class="literal">false</span>).toEqual(isInteger(<span class="number">0</span>));</span><br><span class="line">        expect(<span class="literal">false</span>).toEqual(isInteger(<span class="number">0.1</span>));</span><br><span class="line">        expect(isInteger(<span class="number">0.1</span>)).toEqual(<span class="literal">false</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试倒序排列</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">describe(<span class="string">"this is a string reverse test!"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    it(<span class="string">"reverse String"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        expect(<span class="string">"DCBA"</span>).toEqual(reverse(<span class="string">"ABCD"</span>))</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试数据类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">describe(<span class="string">"data type method test!"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    it(<span class="string">"base data type"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        expect(<span class="string">'number'</span>).toEqual(getTypeofVal(<span class="number">80</span>));</span><br><span class="line">        expect(<span class="string">'string'</span>).toEqual(getTypeofVal(<span class="string">"this is a string"</span>));</span><br><span class="line">        expect(<span class="string">'number'</span>).toEqual(getTypeofVal(<span class="literal">NaN</span>));</span><br><span class="line">        expect(<span class="string">'boolean'</span>).toEqual(getTypeofVal(<span class="literal">true</span>));</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    it(<span class="string">"object type"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        expect(<span class="string">'[object Null]'</span>).toEqual(objType(<span class="literal">null</span>));</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="5、初始化Karma-Jasmine配置"><a href="#5、初始化Karma-Jasmine配置" class="headerlink" title="5、初始化Karma + Jasmine配置"></a>5、初始化Karma + Jasmine配置</h2><p>1，初始化karma</p>
+<ul>
+<li><code>$ karma init</code></li>
+</ul>
+<p>初始化karma如下图：<br><img src="/img/karma-init.png" alt="karma init初始化"></p>
+<p>2，配置文件karma.conf.js：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Karma configuration</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">config</span>) </span>&#123;</span><br><span class="line">  config.set(&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 根路径，后面配置的基本所有相对路径都会根据这个路径来构造。</span></span><br><span class="line">    basePath: <span class="string">''</span>,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用到的框架</span></span><br><span class="line">    <span class="comment">// 目前支持的框架： https://npmjs.org/browse/keyword/karma-adapter</span></span><br><span class="line">    frameworks: [<span class="string">'jasmine'</span>],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 告诉karma业务代码和测试代码在哪</span></span><br><span class="line">    files: [</span><br><span class="line">        <span class="string">'./src/**/*.js'</span>,</span><br><span class="line">        <span class="string">'./test/**/*.spec.js'</span></span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 需要从 files 中排除掉的文件</span></span><br><span class="line">    exclude: [</span><br><span class="line">        <span class="string">'karma.conf.js'</span></span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 指定对应的JS文件 去执行代码的覆盖率，</span></span><br><span class="line">    <span class="comment">// 需要做预处理的文件，以及这些文件对应的预处理器。</span></span><br><span class="line">    <span class="comment">// 此处就可以将 coffee 、 ES6 等代码转换一下。</span></span><br><span class="line">    preprocessors: &#123;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// test results reporter to use</span></span><br><span class="line">    <span class="comment">// possible values: 'dots', 'progress'</span></span><br><span class="line">    <span class="comment">// available reporters: https://npmjs.org/browse/keyword/karma-reporter</span></span><br><span class="line">    reporters: [<span class="string">'progress'</span>],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 服务器端口号</span></span><br><span class="line">    port: <span class="number">9876</span>,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在输出内容（报告器和日志）中启用/禁用颜色</span></span><br><span class="line">    colors: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 日志级别</span></span><br><span class="line">    <span class="comment">// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG</span></span><br><span class="line">    logLevel: config.LOG_INFO,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 启用/禁用监视文件变化重新执行测试的功能</span></span><br><span class="line">    autoWatch: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 要测试的目标环境 ,既然数组可以同时使用多个如：browsers: ['Chrome', 'Firefox', 'Safari'],</span></span><br><span class="line">    <span class="comment">// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher</span></span><br><span class="line">    browsers: [<span class="string">'PhantomJS'</span>],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 命令窗口独立运行环境，不打开浏览器则时true.</span></span><br><span class="line">    <span class="comment">// 这个地方需要注意，如果选择了chrome等图形界面浏览器则是flase。</span></span><br><span class="line">    singleRun: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Concurrency level</span></span><br><span class="line">    <span class="comment">// how many browser should be started simultaneous</span></span><br><span class="line">    concurrency: <span class="literal">Infinity</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="5、代码测试覆盖率"><a href="#5、代码测试覆盖率" class="headerlink" title="5、代码测试覆盖率"></a>5、代码测试覆盖率</h2><ul>
+<li><code>npm install karma-coverage -D</code></li>
+</ul>
+<p>修改karma.conf.js配置文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">reporters: [<span class="string">'progress'</span>,<span class="string">'coverage'</span>],</span><br><span class="line">preprocessors : &#123;<span class="string">'./test/**/*.js'</span>: [<span class="string">'coverage'</span>]&#125;,</span><br><span class="line">coverageReporter: &#123;</span><br><span class="line">    type : <span class="string">'html'</span>,</span><br><span class="line">    dir : <span class="string">'coverage/'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="6、执行并查看测试结果"><a href="#6、执行并查看测试结果" class="headerlink" title="6、执行并查看测试结果"></a>6、执行并查看测试结果</h2><ul>
+<li><code>karma start</code></li>
+</ul>
+<p>成功如下图:<br><img src="/img/karma-success.png" alt="karma单元测试结果图"></p>
+<p>覆盖率运行coverage文件夹里面的index.html即可查看</p>
+<p>如图：<br><img src="/img/karma-coverage.png" alt="代码覆盖率结果图"></p>
+<p>最终项目结构:<br><img src="/img/karma-menu.png" alt="项目目录及文件"></p>
+<hr>
+<p>如看源代码<a href="https://gitee.com/shengzhong5566/karma-demo" target="_blank" rel="noopener">点击这里</a></p>
+<hr>
+<p><strong>总结：</strong> karma是一个集成环境，按照上面步骤完成自己的单元测试案例。如果遇到问题或者文中有错误的地方，欢迎留言。</p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2018/06/13/http-server/" class="next-post btn btn-default" title='node创建HTTP服务器'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">node创建HTTP服务器</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTQ2Mi8xMTk5OA==">
+  <script type="text/javascript">
+     (function(d, s) {
+         var j, e = d.getElementsByTagName(s)[0];
+         if (typeof LivereTower === 'function') { return; }
+         j = d.createElement(s);
+         j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+         j.async = true;
+         e.parentNode.insertBefore(j, e);
+     })(document, 'script');
+  </script>
+</div>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+    <aside class="col-md-4 sidebar">
+        
+        
+        
+        
+    <div class="widget notification">
+        <h3 class="title">网站公告</h3>
+        <div>
+            <p>文章中如果遇到问题或者文中有错误的地方，欢迎留言指正。<br>
+<hr/>
+    邮箱 :  <a href="mailto:shengzhong.cool@163.com">shengzhong.cool@163.com</a><br>
+    微信号 :  <a href="tel:16602124911">shengzhong5566</a>
+
+</p>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+        <h3 class="title">分类</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Nodejs/"><i class="fa" aria-hidden="true">Nodejs</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/"><i class="fa" aria-hidden="true">javascript</i></a><span class="category-list-count">1</span></li></ul>
+    </div>
+
+
+        
+        
+    <div class="widget">
+      <h3 class="title">归档</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/"><i class="fa" aria-hidden="true">六月 2018</i></a><span class="archive-list-count">2</span></li></ul>
+    </div>
+
+
+        
+        
+  <div class="widget">
+    <h3 class="title">标签云</h3>
+    <div class="content tag-cloud">
+        <a href="/tags/karma/" style="font-size: 10px;">karma</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a>
+    </div>
+  </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">友链</h3>
+        <div class="content friends-link">
+        
+            <a href="http://www.weblogger.club" class="fa" target="_blank">个人博客</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
+
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <span>Copyright &copy; 2018
+                </span> |
+        <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span> |
+        <span id="busuanzi_container_site_pv">
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span> |
+        <span id="busuanzi_container_site_uv">
+您是本站第<span id="busuanzi_value_site_uv"></span>位访客
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+	<script src="/js/search.js?rev=@@hash"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
