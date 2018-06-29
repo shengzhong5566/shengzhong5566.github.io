@@ -236,7 +236,7 @@
 <p><img src="/img/setting.jpg" alt="选择setting"><br><img src="/img/branch.jpg" alt="选择master branch"></p>
 <p>3, 复制你的项目链接。（ 注意使用的是Clone with HTTPS ）</p>
 <p><img src="/img/download.jpg" alt="复制自己项目地址链接"></p>
-<p>4, 打开blog项目，修改 _config.yml 文件的一些配置(冒号之后都是有一个半角空格的),完成关联。</p>
+<p>4, 打开blog项目，修改 _config.yml 文件的一些配置(注意冒号之后都是有一个半角空格的),完成关联。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/shengzhong5566/shengzhong5566.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="5、本地项目推送到-GitHub-托管"><a href="#5、本地项目推送到-GitHub-托管" class="headerlink" title="5、本地项目推送到 GitHub 托管"></a>5、本地项目推送到 GitHub 托管</h2><p>安装 <code>$ npm install hexo-deployer-git --save</code> 插件，实现生产本地生产文件及推送功能。</p>
@@ -246,6 +246,7 @@
 <li><code>$ hexo g</code> </li>
 <li><code>$ hexo d</code></li>
 </ul>
+<p>推送的过程会出现让你输入用户名和密码，这里用户名就是github用户名，密码就是github的密码。如果不想输入用户名和密码则可以配置SSH key。后续文章会介绍</p>
 <hr>
 <h2 id="6、选择适合自己的主题"><a href="#6、选择适合自己的主题" class="headerlink" title="6、选择适合自己的主题"></a>6、选择适合自己的主题</h2><p>hexo初始化之后默认的主题是landscape，然后可以到<a href="https://hexo.io/themes/" target="_blank" rel="noopener">点击这里</a>去找自己想要的主题。克隆下来放到themes文件夹中，注意文件夹名则是设置主题的名字。这里用next主题为例：</p>
 <ul>
