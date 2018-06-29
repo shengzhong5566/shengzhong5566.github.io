@@ -264,7 +264,7 @@
 <li><code>$ hexo d</code></li>
 </ul>
 <hr>
-<h2 id="7、绑定域名"><a href="#7、绑定域名" class="headerlink" title="7、绑定域名"></a>7、绑定域名</h2><p>博客已经搭建好，也能通过github的域名访问，大部分人还是想用自己的域名。将自己的域名绑定到github这个博客项目上。</p>
+<h2 id="7、绑定域名"><a href="#7、绑定域名" class="headerlink" title="7、绑定域名"></a>7、绑定域名</h2><p>博客已经搭建好，也能通过github的域名访问，大部分人还是想用自己的域名。将自己的域名绑定到github这个博客项目上。我这里用的是腾讯云上买的域名作为案例。</p>
 <p>1，github官网提供的两个主机ip地址：<code>192.30.252.153</code> 和 <code>192.30.252.154</code>。<br>将这两个作为主机地址，给域名的DNS解析添加两个 A记录，（ 这里使用新手快速添加，填入ip地址即可快速完成 ）然后再添加一个 CNAME记录 主机地址填的是我原本用来访问github博客的地址： shengzhong5566.github.io ，添加完成后如下：</p>
 <p><img src="/img/domain.jpg" alt="域名解析"></p>
 <p>2，在hexo本地目录 source 目录下面新建一个文件，取名为CNAME文件 (无后缀)，内容就是上面所说到的自己的域名</p>
