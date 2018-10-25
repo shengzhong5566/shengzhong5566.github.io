@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>vue-cli3.0图形用户界面创建项目 | 声钟博客</title>
+<title>归档：2018/10 | 声钟博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="声钟博客" type="application/atom+xml">
@@ -124,168 +124,148 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content m-post">
-                    <p id="process"></p>
-<article class="post">
-    <div class="post-head">
-        <h1 id="vue-cli3.0图形用户界面创建项目">
-            
-	            vue-cli3.0图形用户界面创建项目
-            
-        </h1>
-        <div class="post-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/vue">
-            vue
-        </a>
-    </span>
-    
-
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
+                <main class="col-md-8 main-content ">
+                    <div id="main">
+     <div class="timebox">
+          <div class="timeline">
+              <ul>
                 
-                    <a href="/tags/vue-cli3.0" title='vue-cli3.0'>
-                        vue-cli3.0
-                    </a>
                 
-            
-        </span>
-    </span>
-    
-
-    
-        
-        <span class="fa-wrap">
-            <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/09/19</span>
-        </span>
-        
-            <span class="fa-wrap">
-                <i class="fa fa-eye"></i>
-                <span id="busuanzi_value_page_pv"></span>
-            </span>
-        
-    
+                    
+                    
+                        
+                            
+                            <h2>2018</h2>
+                        
+                        
+                          <li class="">
+                        
+                            <h3>
+                              19<span>10月</span>
+                            </h3>
+                            <a href="/2018/10/19/activation-object/" title="再也不用担心搞不懂函数、变量声明提升" target="_blank">再也不用担心搞不懂函数、变量声明提升</a>
+                        </li>
+                    
+                
+                    
+                    
+                        
+                        
+                          <li class="hide">
+                        
+                            <h3>
+                              19<span>09月</span>
+                            </h3>
+                            <a href="/2018/09/19/vueCli3-0/" title="vue-cli3.0图形用户界面创建项目" target="_blank">vue-cli3.0图形用户界面创建项目</a>
+                        </li>
+                    
+                
+                    
+                    
+                        
+                        
+                          <li class="hide">
+                        
+                            <h3>
+                              08<span>04月</span>
+                            </h3>
+                            <a href="/2018/04/08/karma-init/" title="karma单元测试入门" target="_blank">karma单元测试入门</a>
+                        </li>
+                    
+                
+                    
+                    
+                        
+                        
+                          <li class="hide">
+                        
+                            <h3>
+                              26<span>03月</span>
+                            </h3>
+                            <a href="/2018/03/26/http-server/" title="node创建HTTP服务器" target="_blank">node创建HTTP服务器</a>
+                        </li>
+                    
+                
+                    
+                    
+                        
+                        
+                          <li class="hide">
+                        
+                            <h3>
+                              15<span>03月</span>
+                            </h3>
+                            <a href="/2018/03/15/hexo-blog/" title="hexo快速搭建自己的免费博客" target="_blank">hexo快速搭建自己的免费博客</a>
+                        </li>
+                    
+                
+              </ul>
+          </div>
+    </div>
 </div>
-
-            
-            
-    </div>
-    
-    <div class="post-body post-content">
-        <p>vue-cli3.0是一个全新版本脚手架，使用webpack4.0对项目进行打包，提高打包速度和精简项目目录结构等优势。让我们尽情拥抱它的到来吧。</p>
-<pre><code>申明：本教程使用node版本为8.9.3,vue-cli版本是3.0.3。 
-</code></pre><hr>
-<h2 id="1、环境安装"><a href="#1、环境安装" class="headerlink" title="1、环境安装"></a>1、环境安装</h2><ul>
-<li><code>npm install -g @vue/cli</code> 或者 <code>yarn global add @vue/cli</code> </li>
-</ul>
-<p>安装成功如图：<br><img src="/img/vue-cli/vue-cli-1.png" alt="vue-cli安装"> </p>
-<hr>
-<h2 id="2、项目创建"><a href="#2、项目创建" class="headerlink" title="2、项目创建"></a>2、项目创建</h2><ul>
-<li><code>vue ui</code></li>
-</ul>
-<p>在浏览器中进行如下操作：<br><img src="/img/vue-cli/vue-cli-2.png" alt=""> </p>
-<p>第2步：<br><img src="/img/vue-cli/vue-cli-3.jpg" alt=""> </p>
-<p>第3步：<br><img src="/img/vue-cli/vue-cli-4.png" alt=""> </p>
-<p>第4步：<br><img src="/img/vue-cli/vue-cli5.jpg" alt=""> </p>
-<p>第5步：<br><img src="/img/vue-cli/vue-cli-6.jpg" alt=""> </p>
-<p>第6步：<br><img src="/img/vue-cli/vue-cli-7.jpg" alt=""> </p>
-<h2 id="3、启动项目"><a href="#3、启动项目" class="headerlink" title="3、启动项目"></a>3、启动项目</h2><p><img src="/img/vue-cli/vue-cli-8.jpg" alt=""> </p>
-<p><b>总结：</b><br>3.0项目结构去掉了2.x build和config等目录 ,大部分配置都已集成，可以按照默认配置进行编译，打包；也可以自己定义配置，在根目录新建vue.config.js，自己的配置会替换默认配置。根据自己需要自行配置。详细配置可以看官方文档<a href="https://cli.vuejs.org/zh/config/" target="_blank" rel="noopener">详细vue.config.js配置</a></p>
-
-    </div>
-    
-        <div class="reward">
-    <div class="reward-wrap">赏
-        <div class="reward-box">
-            
-            
-                <span class="reward-type">
-                    <img class="wechat" src="../img/wechat-pay.jpg"><b>微信打赏</b>
-                </span>
-            
-        </div>
-    </div>
-    <p class="reward-tip"></p>
-</div>
-
-
-    
-    <div class="post-footer">
-        <div>
-            
-                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
-            
-        </div>
-        <div>
-            
-        </div>
-    </div>
-</article>
-
-<div class="article-nav prev-next-wrap clearfix">
-    
-        <a href="/2018/10/19/activation-object/" class="pre-post btn btn-default" title='再也不用担心搞不懂函数、变量声明提升'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">再也不用担心搞不懂函数、变量声明提升</span>
-        </a>
-    
-    
-        <a href="/2018/04/08/karma-init/" class="next-post btn btn-default" title='karma单元测试入门'>
-            <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">karma单元测试入门</span><i class="fa fa-angle-right fa-fw"></i>
-        </a>
-    
-</div>
-
-
-    <div id="comments">
-        
-    
-    <div id="vcomments" class="valine"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="/assets/valine.min.js"></script>
-
-    <script>
-        new Valine({
-            av: AV,
-            el: '#vcomments',
-            appId: '8IqwN5QQbNTBFn4qqVjcTcwy-gzGzoHsz',
-            appKey: 'eisKWFot2DUmzSfiW12RdDDA',
-            placeholder: '说点什么吧',
-            notify: false,
-            verify: false,
-            avatar: 'mm',
-            meta: 'nick,mail'.split(','),
-            pageSize: '10',
-            path: window.location.pathname,
-            lang: 'zh-CN'.toLowerCase()
-        })
-    </script>
-
-
-    </div>
-
-
 
 
 
                 </main>
                 
-                    <aside id="article-toc" role="navigation" class="col-md-4">
-    <div class="widget">
-        <h3 class="title">文章目录</h3>
+                    
+    <aside class="col-md-4 sidebar">
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、环境安装"><span class="toc-text">1、环境安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、项目创建"><span class="toc-text">2、项目创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、启动项目"><span class="toc-text">3、启动项目</span></a></li></ol>
+        
+    <div class="widget">
+        <h3 class="title">网站公告</h3>
+        <div class="notification">
+            <p>
+  文章中如果遇到问题或者文中有错误的地方，欢迎留言指正。<br>
+  <hr/>
+  邮箱 : <a href="mailto:shengzhong.cool@163.com">shengzhong.cool@163.com</a><br>
+  微信号 : <a href="tel:16602124911">shengzhong5566</a>
+</p>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+        <h3 class="title">分类</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/"><i class="fa" aria-hidden="true">Javascript</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nodejs/"><i class="fa" aria-hidden="true">Nodejs</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/"><i class="fa" aria-hidden="true">hexo</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/"><i class="fa" aria-hidden="true">vue</i></a><span class="category-list-count">1</span></li></ul>
+    </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">归档</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">2018年10月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">2018年09月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/"><i class="fa" aria-hidden="true">2018年04月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/"><i class="fa" aria-hidden="true">2018年03月</i></a><span class="archive-list-count">2</span></li></ul>
+    </div>
+
+
+        
+        
+  <div class="widget">
+    <h3 class="title">标签云</h3>
+    <div class="content tag-cloud">
+        
+            <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/karma/" style="font-size: 10px;">karma</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/vue-cli3-0/" style="font-size: 10px;">vue-cli3.0</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a>
         
     </div>
-</aside>
+  </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">友链</h3>
+        <div class="content friends-link">
+        
+            <a href="http://www.weblogger.club" class="fa" target="_blank">个人博客</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
 
                 
             </div>
@@ -338,6 +318,8 @@
     </div>
 </div>
 
+
+	<script src="/js/search.js?rev=@@hash"></script>
 
 
 

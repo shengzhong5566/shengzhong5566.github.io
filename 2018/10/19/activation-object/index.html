@@ -1,0 +1,370 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="声钟博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://shengzhong5566.github.io">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>再也不用担心搞不懂函数、变量声明提升 | 声钟博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="声钟博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='杨声钟'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://shengzhong5566.github.io">声钟博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Javascript/"><i class="fa "></i>Javascript</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Nodejs/"><i class="fa "></i>Nodejs</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/hexo/"><i class="fa "></i>hexo</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="再也不用担心搞不懂函数、变量声明提升">
+            
+	            再也不用担心搞不懂函数、变量声明提升
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/Javascript">
+            Javascript
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/javascript" title='javascript'>
+                        javascript
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/10/19</span>
+        </span>
+        
+            <span class="fa-wrap">
+                <i class="fa fa-eye"></i>
+                <span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>在我们前端笔试的过程中几乎都会遇到函数声明提升或者变量声明提升的题目，是不是很多人知道这个知识点但是分析的时候还是会出现不同程度的错误呢，接下来跟我一步步走下去，让大家以后再也不用担心这类题目带来的困扰。</p>
+<h2 id="1、js运行三部曲"><a href="#1、js运行三部曲" class="headerlink" title="1、js运行三部曲"></a>1、js运行三部曲</h2><p>我们必须要了解javascript有2个特点，单线程和解释性语言，可以理解解释性语言是翻译一句执行一句，那么在js运行时是经过以下三步：</p>
+<ul>
+<li>语法分析</li>
+<li>预编译</li>
+<li>解释执行</li>
+</ul>
+<pre><code>说明：语法分析就是通篇扫描一遍是否有语法错误，没有错误进行预编译阶段，然后进行解释执行。
+</code></pre><h2 id="2、预编译前奏"><a href="#2、预编译前奏" class="headerlink" title="2、预编译前奏"></a>2、预编译前奏</h2><ul>
+<li>imply global 暗示全局变量： 即任何变量，如果变量未经声明就赋值，此变量就为全局对象所有；</li>
+<li>一切声明的全局变量，全是window的属性。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">eg: 这里只是简要说明下以上亮点。</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a) </span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.b)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testGlobal</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = b = <span class="number">123</span>;</span><br><span class="line">&#125;</span><br><span class="line">testGlobal()</span><br><span class="line"><span class="built_in">console</span>.log(b)</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"></span><br><span class="line">eg: 按照我们思维解释一行编译一行，没有任何问题。</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"test"</span>)</span><br><span class="line">&#125;</span><br><span class="line">test()  <span class="comment">// test</span></span><br><span class="line"></span><br><span class="line">eg: 按照我们思维解释一行编译一行,应该报错呀，为什么能正常打印出结果呢。</span><br><span class="line">test1() <span class="comment">// test1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"test1"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line"><span class="keyword">var</span> test3 = <span class="number">5</span></span><br><span class="line"><span class="built_in">console</span>.log(test3) <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line">eg: 为什么能输出<span class="literal">undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(test4) <span class="comment">//undefined</span></span><br><span class="line"><span class="keyword">var</span> test4 = <span class="number">6</span></span><br><span class="line"></span><br><span class="line">eg: 为啥这样就报错。</span><br><span class="line"><span class="built_in">console</span>.log(test5) <span class="comment">// error</span></span><br></pre></td></tr></table></figure>
+<p>经过以上的例子，很多人会快速的总结两句话：</p>
+<ul>
+<li>1，函数声明整体提升、</li>
+<li>2，变量的声明提升。</li>
+</ul>
+<p>这2句正确但是不能解决我们所有问题，不多说，用例子说话：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">eg: 这里我就不写答案了，自己可以试一试是否掌握。</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line">a(<span class="number">123</span>);</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line">eg: 这里我就不写答案了，自己可以试一试是否掌握。</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    a = <span class="number">123</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line">a(<span class="number">123</span>);</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">123</span>;</span><br></pre></td></tr></table></figure>
+<p>如果感觉有点晕乎，那么我们了解预编译则可以轻松解答问题。</p>
+<h2 id="3、预编译"><a href="#3、预编译" class="headerlink" title="3、预编译"></a>3、预编译</h2><p>记住预编译发生在函数执行的前一刻，我们记住以下四部曲即可：</p>
+<blockquote>
+<ul>
+<li>创建AO对象;</li>
+<li>找形参和变量声明，将变量和形参作为AO对象的属性名，值为undefined;</li>
+<li>将实参值和形参统一；</li>
+<li>在函数体里面找到函数声明，值赋予函数体。</li>
+</ul>
+</blockquote>
+<p>那么有人会问了，函数执行是这样，那么全局定义的变量声明和函数声明会是怎样呢，其实一样，不同的就是第一步，全局创建GO对象，GO也就是等于window。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">eg: 我们先看函数执行</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">    <span class="built_in">console</span>.log(c);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">111</span>);</span><br><span class="line"></span><br><span class="line">求解：对应以上步骤来</span><br><span class="line">第<span class="number">1</span>步： 创建AO对象</span><br><span class="line">    AO&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">第<span class="number">2</span>步：  找形参和变量声明，将变量和形参作为AO对象的属性名，值为<span class="literal">undefined</span>，如果形参和变量声明或者函数声明有同名的则写一个就好。</span><br><span class="line">    AO&#123;</span><br><span class="line">        a: <span class="literal">undefined</span>,</span><br><span class="line">        b: <span class="literal">undefined</span>,</span><br><span class="line">        c: <span class="literal">undefined</span></span><br><span class="line">    &#125;</span><br><span class="line">第<span class="number">3</span>步： 将实参值和形参统一；</span><br><span class="line">    AO&#123;</span><br><span class="line">        a: <span class="number">111</span>,</span><br><span class="line">        b: <span class="literal">undefined</span>,</span><br><span class="line">        c: <span class="literal">undefined</span></span><br><span class="line">    &#125;</span><br><span class="line">第<span class="number">4</span>步： 在函数体里面找到函数声明，值赋予函数体。</span><br><span class="line">    AO&#123;</span><br><span class="line">        a: <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">        b: <span class="literal">undefined</span>,</span><br><span class="line">        c: <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">第<span class="number">5</span>步： 在按照顺序执行，提升的和赋值过的我们就不用看了。</span><br><span class="line">    fn(<span class="number">111</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(a)       <span class="comment">// function a()&#123;&#125;   a ==&gt; AO.a</span></span><br><span class="line">    <span class="built_in">console</span>.log(b)       <span class="comment">// undefined</span></span><br><span class="line">    <span class="built_in">console</span>.log(c)       <span class="comment">// function c()&#123;&#125;</span></span><br><span class="line">    a =<span class="number">123</span>               <span class="comment">// 这里只剩下赋值  A0.a = 123</span></span><br><span class="line">    <span class="built_in">console</span>.log(a)       <span class="comment">// 123</span></span><br><span class="line">    b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;    <span class="comment">// AO.b = function()&#123;&#125;</span></span><br><span class="line">    <span class="built_in">console</span>.log(b)       <span class="comment">// function()&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>总结说下第五步，这就是剩下执行的语句了，为啥变量声明和函数声明都没有了呢，就是前面4步已经执行了，这下是不是有点恍然大悟，原来如此简单，我们继续多来几个例子来说明，也便于增加记忆。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">eg:</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">    <span class="keyword">var</span> b =<span class="number">234</span>;</span><br><span class="line">    a = <span class="number">123</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">    b = <span class="number">456</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">&#125;</span><br><span class="line">fn1(<span class="number">222</span>);</span><br><span class="line">按照预编译步骤来解：</span><br><span class="line">第<span class="number">1</span>步： </span><br><span class="line">    AO&#123;&#125; </span><br><span class="line">第<span class="number">2</span>步： </span><br><span class="line">    AO&#123;</span><br><span class="line">        a: <span class="literal">undefined</span>,</span><br><span class="line">        b: <span class="literal">undefined</span>,</span><br><span class="line">    &#125;</span><br><span class="line">第<span class="number">3</span>步： </span><br><span class="line">    AO&#123;</span><br><span class="line">        a: <span class="number">222</span>,</span><br><span class="line">        b: <span class="literal">undefined</span>,</span><br><span class="line">    &#125;</span><br><span class="line">第<span class="number">4</span>步： </span><br><span class="line">    AO&#123;</span><br><span class="line">        a: <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">        b: <span class="literal">undefined</span>,</span><br><span class="line">    &#125; </span><br><span class="line">第<span class="number">5</span>步：  解释执行</span><br><span class="line">    fn1(<span class="number">222</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(a)    <span class="comment">// function a()&#123;&#125;    </span></span><br><span class="line">    cosnole.log(b)    <span class="comment">// undefined</span></span><br><span class="line">    b =  <span class="number">234</span>;         <span class="comment">// AO.b = 234</span></span><br><span class="line">    a = <span class="number">123</span>           <span class="comment">// AO.a = 123</span></span><br><span class="line">    <span class="built_in">console</span>.log(a)    <span class="comment">// 123</span></span><br><span class="line">    b = <span class="number">456</span>;          <span class="comment">// AO.b = 456</span></span><br><span class="line">    b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;  <span class="comment">// Ao.b = function()&#123;&#125;</span></span><br><span class="line">    <span class="built_in">console</span>.log(a);   <span class="comment">// 123</span></span><br><span class="line">    <span class="built_in">console</span>.log(b);   <span class="comment">// function()&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>现在经过以上2个案例是不是基本了解预编译，是不是就不怕函数声明提升和变量声明提升呢，有人说了，要是全局变量声明和有全局函数声明又有函数体内函数声明顺序又是怎么样的呢？</p>
+<p>记住全局生成GO对象，函数执行体生成AO对象。其他规则一样，继续来例子说明：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">eg:</span><br><span class="line"><span class="built_in">console</span>.log(global)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">global</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(global)</span><br><span class="line">    global = <span class="number">200</span></span><br><span class="line">    <span class="built_in">console</span>.log(global)</span><br><span class="line">    <span class="keyword">var</span> global = <span class="number">300</span></span><br><span class="line">&#125;</span><br><span class="line">global()</span><br><span class="line"><span class="built_in">console</span>.log(global);</span><br><span class="line">global = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">var</span> global;</span><br><span class="line"><span class="built_in">console</span>.log(global);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">第<span class="number">1</span>步： </span><br><span class="line">    GO&#123;&#125;</span><br><span class="line">第<span class="number">2</span>步：  </span><br><span class="line">    GO&#123;</span><br><span class="line">        global: <span class="literal">undefined</span>     </span><br><span class="line">    &#125;  </span><br><span class="line">第<span class="number">3</span>步：, 没有    </span><br><span class="line">第<span class="number">4</span>步：  </span><br><span class="line">    GO&#123;</span><br><span class="line">        global: global()&#123; ...&#125; </span><br><span class="line">    &#125;  </span><br><span class="line">第<span class="number">5</span>步：解释执行 </span><br><span class="line">    <span class="built_in">console</span>.log(global)   <span class="comment">//  global()&#123; ...&#125; </span></span><br><span class="line">    接下来要执行函数，那么执行函数之前要走<span class="number">4</span>步       </span><br><span class="line">第<span class="number">1</span>步： </span><br><span class="line">    AO&#123;&#125;</span><br><span class="line"></span><br><span class="line">第<span class="number">2</span>步： </span><br><span class="line">    AO&#123;</span><br><span class="line">        global: <span class="literal">undefined</span></span><br><span class="line">    &#125;</span><br><span class="line">第<span class="number">3</span>步： 没有</span><br><span class="line">第<span class="number">4</span>步： 没有</span><br><span class="line"></span><br><span class="line">第<span class="number">5</span>步：解释执行 </span><br><span class="line">    global()</span><br><span class="line">    <span class="built_in">console</span>.log(global)  <span class="comment">// undefined  注意：AO对象找到则值为AO的属性值，没有则去GO对象里面去找</span></span><br><span class="line">    global = <span class="number">200</span>         <span class="comment">// AO.global = 200</span></span><br><span class="line">    <span class="built_in">console</span>.log(global)  <span class="comment">// 200</span></span><br><span class="line">    global = <span class="number">300</span>         <span class="comment">// AO.global = 300</span></span><br><span class="line">    global = <span class="number">100</span>;        <span class="comment">// GO.global = 100</span></span><br><span class="line">    <span class="built_in">console</span>.log(global)  <span class="comment">// 100  这里是全局的global</span></span><br><span class="line"></span><br><span class="line">eg: 这一题有了<span class="keyword">if</span>，其实预编译我只管找你声明，其他不管，那么又和以上步骤相同，还有就是没有声明就赋值则挂在GO对象上</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);    <span class="comment">// undefined  AO对象没有，则到GO对象中找</span></span><br><span class="line">    <span class="built_in">console</span>.log(b);    <span class="comment">// undefined</span></span><br><span class="line">    <span class="keyword">if</span>(a)&#123;             </span><br><span class="line">        <span class="keyword">var</span> b = <span class="number">100</span>;   <span class="comment">// 不执行b的赋值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(b);    <span class="comment">// undefined</span></span><br><span class="line">    c = <span class="number">234</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(c)     <span class="comment">//234</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a ;</span><br><span class="line">test();</span><br><span class="line">a = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">console</span>.log(c)  <span class="comment">//234</span></span><br><span class="line"></span><br><span class="line">解答，这里我就简要的写最终两个对象的值：</span><br><span class="line">GO&#123; </span><br><span class="line">    a: <span class="number">10</span></span><br><span class="line">    c: <span class="number">234</span></span><br><span class="line">&#125;</span><br><span class="line">AO&#123;</span><br><span class="line">    b: <span class="literal">undefined</span>,</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">所以答案很明显.</span><br></pre></td></tr></table></figure>
+<h2 id="4、总结"><a href="#4、总结" class="headerlink" title="4、总结"></a>4、总结</h2><p>经过以上总结，那我们是不是可以找到规律：</p>
+<ul>
+<li>打印变量值前面有赋值，则该值为赋值的值。</li>
+<li>打印变量值之前没有赋值，有函数声明则值函数声明，没有再看形参，再没有看变量声明，从AO找到GO。说白了就是4步曲的倒序。</li>
+</ul>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="../img/wechat-pay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip"></p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2018/09/19/vueCli3-0/" class="next-post btn btn-default" title='vue-cli3.0图形用户界面创建项目'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">vue-cli3.0图形用户界面创建项目</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: '8IqwN5QQbNTBFn4qqVjcTcwy-gzGzoHsz',
+            appKey: 'eisKWFot2DUmzSfiW12RdDDA',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、js运行三部曲"><span class="toc-text">1、js运行三部曲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、预编译前奏"><span class="toc-text">2、预编译前奏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、预编译"><span class="toc-text">3、预编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、总结"><span class="toc-text">4、总结</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        访问量:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        访客数:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
